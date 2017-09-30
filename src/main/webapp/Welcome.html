@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+</head>
+<body ng-app="mainApp" ng-init="
+item=[
+{link:'#!/one',text:'Page One'},
+{link:'#!/two/arief',text:'Page Two'},
+{link:'/arief/',text:'Home Page'},
+{link:'#!/form',text:'Form Page'}
+
+]">
+
+    <ul type="none">
+        <li ng-repeat="x in item">
+            <a href="{{x.link}}">{{x.text}}</a>
+        </li>
+    </ul>
+
+    <div ng-view></div>
+
+</body>
+    <script>
+        var app = angular.module('mainApp',['ngRoute']);
+
+
+        app.config(function($routeProvider){
+            $routeProvider.
+            when('/one',{
+               templateUrl:"templates/PageOne.html",
+               controller:"pageOne"
+            }).when('/two/:param',{
+               templateUrl:"templates/PageTwo.html",
+               controller:"pageTwo"
+            }).when('/form',{
+               templateUrl:"templates/FormParam.html",
+               controller:"formParam"
+            }).otherwise({
+                templateUrl:"templates/HomePage.html"
+            });
+        })
+
+
+    </script>
+
+    <script src="jscontrollers/PageOneController.js"></script>
+    <script src="jscontrollers/PageTwoController.js"></script>
+    <script src="jscontrollers/FormParamController.js"></script>
+
+</html>

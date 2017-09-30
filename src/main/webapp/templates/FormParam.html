@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Param</title>
+</head>
+<body>
+    <form ng-controller="formParam">
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td><input type="text" name="nama" id="nama" placeholder="Nama Anda" ng-model="nama"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit Param Nama" ng-click="submitParam()"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
